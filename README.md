@@ -12,7 +12,7 @@ inspired by [github-trending(Go Version)](https://github.com/josephyzhou/github-
 You need install `git`
 
 ```bash
-$ git config --global user.name "rocj"
+$ git config --global user.name "username"
 $ git config --global user.email "mail@qq.com"
 $ ssh-keygen -t rsa -b 4096 -C "mail@qq.com"
 ```
