@@ -60,9 +60,12 @@ def scrape(language, filename):
 def job():
 
     strdate = datetime.datetime.now().strftime('%Y-%m-%d')
-    filename = '{date}.md'.format(date=strdate)
+    dirname = datetime.datetime.now().strftime('%Y/%m')
+    filename = dirname + "/" + '{date}.md'.format(date=strdate)
 
     # create markdown file
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
     createMarkdown(strdate, filename)
 
     # write markdown
