@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+log/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
