@@ -9,13 +9,21 @@ inspired by [github-trending(Go Version)](https://github.com/josephyzhou/github-
 
 ## Run
 
+You need install `git`
+
+```bash
+$ git config --global user.name "rocj"
+$ git config --global user.email "mail@qq.com"
+$ ssh-keygen -t rsa -b 4096 -C "mail@qq.com"
+```
+
 You need install `pyquery` & `requests`
 
 ```bash
-  $ git clone https://github.com/bonfy/github-trending.git
-  $ cd github-trending
-  $ pip install -r requirements.txt
-  $ python scraper.py
+$ git clone https://github.com/rocj/github-trending.git
+$ cd github-trending
+$ pip install -r requirements.txt
+$ python main.py
 ```
 
 ## Advance
