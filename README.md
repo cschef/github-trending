@@ -23,7 +23,7 @@ You need install `pyquery` & `requests`
 $ git clone https://github.com/rocj/github-trending.git
 $ cd github-trending
 $ pip install -r requirements.txt
-$ python main.py
+$ nohup python -u main.py > out.log 2>&1 &
 ```
 
 ## Advance
