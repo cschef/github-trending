@@ -25,6 +25,13 @@ $ cd github-trending
 $ pip install -r requirements.txt
 $ nohup python -u main.py > out.log 2>&1 &
 ```
+> Note: 解决 `lxml` 安装不上的方法
+```bash
+# ubuntu 14.04
+sudo apt-get build-dep python3-lxml
+sudo apt-get install libxml2-dev libxslt-dev python-dev
+```
+详情请看 [stackoverflow](http://stackoverflow.com/questions/5178416/pip-install-lxml-error)
 
 ## Advance
 
