@@ -88,7 +88,7 @@ if __name__ == '__main__':
 
     # scrape at predefined time, once a day
     while True:
-        if time.strftime('%H:%M') == '13:40':
+        if time.strftime('%H:%M') == '23:30':
             while True:
                 job()
                 time.sleep(24 * 60 * 60)
