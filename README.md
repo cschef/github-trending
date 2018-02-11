@@ -1,5 +1,7 @@
 # GitHub Trending
 
+[![Build Status](https://travis-ci.org/rocj/github-trending.svg?branch=master)](https://travis-ci.org/rocj/github-trending)
+
 爬取 `GitHub Trending` 页面每天最活跃的项目，并自动提交到你的仓库
 
 Scrape the most excited repos in Github Trending everyday, and automaticly commit to your GitHub repo.
