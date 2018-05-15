@@ -6,12 +6,10 @@
 
 Scrape the most excited repos in Github Trending everyday, and automaticly commit to your GitHub repo.
 
-> Transplant from [github-trending(Go Version)](https://github.com/josephyzhou/github-trending)
-
 ## Require
 
 * git
-* python 3.x
+* python 2.x, 3.x
 * pyquery & requests
 
 ## Usage
@@ -43,7 +41,7 @@ $ pip install -r requirements.txt
 * Run
 
 ```bash
-nohup python -u scrape.py > out.log 2>&1 &
+nohup python -u run.py > out.log 2>&1 &
 ```
 
 > Note: 解决 `lxml` 安装不上的方法
@@ -54,6 +52,12 @@ sudo apt-get install libxml2-dev libxslt-dev python-dev
 ```
 See it on [stackoverflow](http://stackoverflow.com/questions/5178416/pip-install-lxml-error)
 
+## Other
+
+[josephyzhou/github-trending (Go Version)](https://github.com/josephyzhou/github-trending)
+
 ## Lisence
 
-MIT
+![](https://img.shields.io/github/license/poetdp/log-archive.svg)
+
+Released under the [MIT](./LICENSE) License.
