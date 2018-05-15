@@ -8,21 +8,6 @@ import time
 from pyquery import PyQuery as pq
 
 
-def git_add_commit_push(date, filename):
-    cmd_git_add = 'git add .'
-    cmd_git_commit = 'git commit -m "{date}"'.format(date=date)
-    cmd_git_push = 'git push -u origin master'
-
-    os.system(cmd_git_add)
-    os.system(cmd_git_commit)
-    os.system(cmd_git_push)
-
-
-def createMarkdown(date, filename):
-    with open(filename, 'w') as f:
-        f.write("## " + date + "\n")
-
-
 def scrape(language, filename):
 
     HEADERS = {
@@ -32,8 +17,8 @@ def scrape(language, filename):
         'Accept-Language'	: 'zh-CN,zh;q=0.8'
     }
 
-    url = 'https://github.com/trending/{language}'.format(language=language)
-    r = requests.get(url, headers=HEADERS)
+    url = 'https://github.com/trending/{language}'.format(language = language)
+    r = requests.get(url, headers = HEADERS)
     assert r.status_code == 200
 
     # print(r.encoding)
@@ -43,54 +28,38 @@ def scrape(language, filename):
 
     # codecs to solve the problem utf-8 codec like chinese
     with codecs.open(filename, "a", "utf-8") as f:
-        f.write('\n#### {language}\n'.format(language=language))
+        f.write('\n## {language}\n'.format(language = language))
 
         for item in items:
             i = pq(item)
             title = i("h3 a").text()
-            owner = i("span.prefix").text()
+            #owner = i("span.prefix").text()
             description = i("p.col-9").text()
             url = i("h3 a").attr("href")
             url = "https://github.com" + url
             # ownerImg = i("p.repo-list-meta a img").attr("src")
             # print(ownerImg)
-            f.write(u"* [{title}]({url}):{description}\n".format(title=title,
-                                                                 url=url, description=description))
+            f.write(u"* [{title}]({url}):{description}\n".format(title = title, url = url, description = description))
 
 
 def job():
 
     strdate = datetime.datetime.now().strftime('%Y-%m-%d')
     dirname = datetime.datetime.now().strftime('%Y/%m')
-    filename = dirname + "/" + '{date}.md'.format(date=strdate)
+    filename = dirname + '/' + '{date}.md'.format(date = strdate)
+    languageList = ['c', 'c++', 'c%23', 'java', 'python', 'html', 'css', 'javascript', 'shell', 'go']
 
     # create markdown file
     if not os.path.exists(dirname):
         os.makedirs(dirname)
-    createMarkdown(strdate, filename)
+    with open(filename, 'w') as f:
+        f.write('# GitHub Trending [' + strdate + ']\n')
+        # write TOC
+        f.write('\n## TOC\n\n')
+        for lan in languageList:
+            f.write('* [{lan}](#{lan})\n'.format(lan = lan))
 
-    # write markdown
-    scrape('c', filename)
-    scrape('c++', filename)
-    scrape('c%23', filename)
-    scrape('python', filename)
-    scrape('java', filename)
-    scrape('javascript', filename)
-    scrape('html', filename)
-    scrape('css', filename)
-    scrape('go', filename)
+    # write contents
+    for lan in languageList:
+        scrape(lan, filename)
 
-    # git add commit push
-    git_add_commit_push(strdate, filename)
-
-
-if __name__ == '__main__':
-
-    # scrape at predefined time, once a day
-    while True:
-        if time.strftime('%H:%M') == '23:30':
-            while True:
-                job()
-                time.sleep(24 * 60 * 60)
-        else:
-            time.sleep(60)

@@ -1,6 +1,7 @@
 venv/
 __pycache__/
 log/
+*.pyc
 
 # Installer logs
 pip-log.txt
