@@ -1,6 +1,6 @@
 # GitHub Trending
 
-[![Build Status](https://travis-ci.org/rocj/github-trending.svg?branch=master)](https://travis-ci.org/rocj/github-trending)
+[![Build Status](https://travis-ci.org/poetdp/github-trending.svg?branch=master)](https://travis-ci.org/poetdp/github-trending)
 
 爬取 `GitHub Trending` 页面每天最活跃的项目，并自动提交到你的仓库
 
