@@ -24,12 +24,16 @@ filename = dirname + '/' + '{date}.md'.format(date = strdate)
 
 # scrape at predefined time, once a day
 while True:
-    if time.strftime('%H:%M') == '23:30':
+    if time.strftime('%H:%M') == '09:25':
+
         while True:
-            scraper.job()
+            #scraper.job()
+
+            # git add commit push
+            strdate = '2018-05-15'
+            filename = '2018-05-15.md'
+            git_add_commit_push(strdate, filename)
+
             time.sleep(24 * 60 * 60)
     else:
-        time.sleep(60)
-
-# git add commit push
-git_add_commit_push(strdate, filename)
+        time.sleep(20)
